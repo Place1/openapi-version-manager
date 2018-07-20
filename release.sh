@@ -22,21 +22,21 @@ make -j4
 echo "creating release"
 github-release release \
   --user "$USERNAME" \
-  --repo swagger-version-manager \
+  --repo openapi-version-manager \
   --tag "$TAG" \
   --name "$TAG"
 
 echo "uploading artifacts"
 ARTIFACTS=(
-  "swagger-version-manager-linux-amd64"
-  "swagger-version-manager-darwin-amd64"
-  "swagger-version-manager-windows-amd64"
+  "openapi-version-manager-linux-amd64"
+  "openapi-version-manager-darwin-amd64"
+  "openapi-version-manager-windows-amd64"
 )
 for ARTIFACT in "${ARTIFACTS[@]}"; do
   echo "uploading: $ARTIFACT"
   github-release upload \
     --user "$USERNAME" \
-    --repo swagger-version-manager \
+    --repo openapi-version-manager \
     --tag "$TAG" \
     --name "$ARTIFACT" \
     --file "./$ARTIFACT"

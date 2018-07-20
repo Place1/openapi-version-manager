@@ -5,20 +5,28 @@ package commands
 import (
 	"fmt"
 	"strings"
+	"path/filepath"
+	"os"
 )
 
-func getSwaggerExecutablePath() string {
-	return "/usr/local/bin/swagger-codegen"
+func outputPath(version string) string {
+	directory := "/opt/openapi-version-manager"
+	os.MkdirAll(directory, os.ModePerm)
+	return filepath.Join(directory, fmt.Sprintf("openapi-generator.%v.jar", version))
 }
 
-func getSwaggerExecutableContent(swaggerJar string) string {
+func getOpenapiExecutablePath() string {
+	return "/usr/local/bin/openapi-generator"
+}
+
+func getOpenapiExecutableContent(openapiJar string) string {
 	return fmt.Sprintf(
 		trimLines(`
 			#!/bin/sh
 			set -e
 			java -jar "%s" $@;
 		`),
-		swaggerJar,
+		openapiJar,
 	)
 }
 

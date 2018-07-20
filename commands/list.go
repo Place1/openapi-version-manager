@@ -24,7 +24,7 @@ type MavenSearch struct {
 }
 
 func List() (err error) {
-	resp, err := http.Get("http://search.maven.org/solrsearch/select?q=g:%22io.swagger%22+AND+a:%22swagger-codegen-cli%22&core=gav&wt=json")
+	resp, err := http.Get("http://search.maven.org/solrsearch/select?q=g:%22org.openapitools%22+AND+a:%22openapi-generator-cli%22&core=gav&wt=json")
 	if err != nil {
 		return err
 	}

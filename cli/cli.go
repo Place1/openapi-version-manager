@@ -5,32 +5,32 @@ import (
 
 	"github.com/urfave/cli"
 
-	"github.com/Place1/swagger-version-manager/commands"
+	"github.com/Place1/openapi-version-manager/commands"
 )
 
 func Run(args []string) error {
 	app := cli.NewApp()
-	app.Name = "swagger-version-manager"
+	app.Name = "openapi-version-manager"
 	app.Version = "1.0.1"
 
 	app.Commands = []cli.Command{
 		{
 			Name:  "current",
-			Usage: "show the current swagger codegen version",
+			Usage: "show the current openapi generator version",
 			Action: func(context *cli.Context) error {
 				return commands.Current()
 			},
 		},
 		{
 			Name:  "list",
-			Usage: "list available swagger codegen versions",
+			Usage: "list available openapi generator versions",
 			Action: func(context *cli.Context) error {
 				return commands.List()
 			},
 		},
 		{
 			Name:      "use",
-			Usage:     "use the specified swagger-codegen-version",
+			Usage:     "use the specified openapi-generator-version",
 			ArgsUsage: "<version>",
 			Action: func(context *cli.Context) error {
 				version := context.Args().First()

@@ -1,24 +1,24 @@
-# swagger-version-manager
+# openapi-version-manager
 
 ## What's this?
-`swagger-version-manager` is a tiny CLI tool to help you manage different versions of `swagger-codegen` on your local
+`openapi-version-manager` is a tiny CLI tool to help you manage different versions of `openapi-generator` on your local
 machine.
 
 ```bash
-$ swagger-version-manager --help
+$ openapi-version-manager --help
 NAME:
-   swagger-version-manager - A new cli application
+   openapi-version-manager - A new cli application
 
 USAGE:
-   swagger-version-manager-darwin-amd64 [global options] command [command options] [arguments...]
+   openapi-version-manager-darwin-amd64 [global options] command [command options] [arguments...]
 
 VERSION:
    1.0.0
 
 COMMANDS:
-     current  show the current swagger codegen version
-     list     list available swagger codegen versions
-     use      use the specified swagger-codegen-version
+     current  show the current openapi codegen version
+     list     list available openapi codegen versions
+     use      use the specified openapi-generator-version
      help, h  Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
@@ -26,9 +26,9 @@ GLOBAL OPTIONS:
    --version, -v  print the version
 ```
 
-**list available swagger versions**
+**list available openapi versions**
 ```bash
-$ swagger-version-manager list
+$ openapi-version-manager list
 3.0.0-rc1
 3.0.0-rc0
 2.3.1
@@ -41,14 +41,14 @@ $ swagger-version-manager list
 2.1.5
 ```
 
-**use a specific swagger-codegen version**
+**use a specific openapi-generator version**
 ```bash
-$ swagger-version-manager use 2.2.3
-downloading http://search.maven.org/remotecontent?filepath=io/swagger/swagger-codegen-cli/2.2.3/swagger-codegen-cli-2.2.3.jar
+$ openapi-version-manager use 2.2.3
+downloading http://search.maven.org/remotecontent?filepath=io/openapi/openapi-generator-cli/2.2.3/openapi-generator-cli-2.2.3.jar
  3.25 MiB / 13.19 MiB [===================>                                                                     ]  25% 00m01
 ```
 ```bash
-$ swagger-codegen version
+$ openapi-generator version
 2.2.3
 ```
 
@@ -56,24 +56,24 @@ $ swagger-codegen version
 
 ### MacOS
 ```bash
-curl -Lo swagger-version-manager https://github.com/Place1/swagger-version-manager/releases/download/v1.0.0/swagger-version-manager-darwin-amd64
-chmod +x ./swagger-version-manager
-mv ./swagger-version-manager /usr/local/bin/
-swagger-version-manager --help
+curl -Lo openapi-version-manager https://github.com/Place1/openapi-version-manager/releases/download/v1.0.0/openapi-version-manager-darwin-amd64
+chmod +x ./openapi-version-manager
+mv ./openapi-version-manager /usr/local/bin/
+openapi-version-manager --help
 ```
 
 ### Linux
 ```bash
-curl -Lo swagger-version-manager https://github.com/Place1/swagger-version-manager/releases/download/v1.0.0/swagger-version-manager-linux-amd64
-chmod +x ./swagger-version-manager
-mv ./swagger-version-manager /usr/local/bin/
-swagger-version-manager --help
+curl -Lo openapi-version-manager https://github.com/Place1/openapi-version-manager/releases/download/v1.0.0/openapi-version-manager-linux-amd64
+chmod +x ./openapi-version-manager
+mv ./openapi-version-manager /usr/local/bin/
+openapi-version-manager --help
 ```
 
 ### Windows
 1. Download the windows binary from the release page
-2. rename it to `swagger-version-manager.exe`
+2. rename it to `openapi-version-manager.exe`
 3. execute it using powershell
-    - `swagger-version-manager` required admin privileges on windows because it writes the `swagger-codegen`
-      executable to `C:\Windows\System32\swagger-codegen`. I'm not familiar with windows but i'd love
+    - `openapi-version-manager` required admin privileges on windows because it writes the `openapi-generator`
+      executable to `C:\Windows\System32\openapi-generator`. I'm not familiar with windows but i'd love
       a PR that changes this behaviour so that admin privileges are not required.

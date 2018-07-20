@@ -7,9 +7,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
-	"os/user"
-	"path/filepath"
-
 	"gopkg.in/cheggaaa/pb.v1"
 )
 
@@ -20,32 +17,25 @@ func Use(version string) error {
 	if err != nil {
 		return err
 	}
-	err = setSwaggerBinFile(output)
+	err = setOpenapiBinFile(output)
 	if err != nil {
 		return err
 	}
-	fmt.Printf("using swagger-codegen %s\n", version)
+	fmt.Printf("using openapi-generator %s\n", version)
 	return nil
 }
 
 func downloadPath(version string) string {
-	return fmt.Sprintf("http://search.maven.org/remotecontent?filepath=io/swagger/swagger-codegen-cli/%s/swagger-codegen-cli-%s.jar", version, version)
+	return fmt.Sprintf("http://search.maven.org/remotecontent?filepath=org/openapitools/openapi-generator-cli/%s/openapi-generator-cli-%s.jar", version, version)
 }
 
-func outputPath(version string) string {
-	currentUser, _ := user.Current()
-	homeDir := currentUser.HomeDir
-	os.MkdirAll(filepath.Join(homeDir, ".swagger-version-manager"), os.ModePerm)
-	return filepath.Join(homeDir, ".swagger-version-manager", fmt.Sprintf("swagger-codegen.%v.jar", version))
-}
-
-func setSwaggerBinFile(swaggerJar string) error {
-	filePath := getSwaggerExecutablePath()
-	scriptContent := getSwaggerExecutableContent(swaggerJar)
+func setOpenapiBinFile(openapiJar string) error {
+	filePath := getOpenapiExecutablePath()
+	scriptContent := getOpenapiExecutableContent(openapiJar)
 	fmt.Printf("updated %s\n", filePath)
 	err := ioutil.WriteFile(filePath, []byte(scriptContent), os.ModePerm)
 	if err != nil {
-		fmt.Printf("failed to update swagger-codegen executable\n")
+		fmt.Printf("failed to update openapi-generator executable\n")
 	}
 	return err
 }
@@ -53,7 +43,7 @@ func setSwaggerBinFile(swaggerJar string) error {
 func downloadFile(url string, output string) error {
 	_, err := os.Stat(output)
 	if err == nil {
-		fmt.Printf("using cached swagger-codegen-cli.jar at: %s\n", output)
+		fmt.Printf("using cached openapi-generator-cli.jar at: %s\n", output)
 		return nil
 	}
 
@@ -66,7 +56,7 @@ func downloadFile(url string, output string) error {
 	fmt.Printf("downloading %s\n", url)
 	resp, err := http.Get(url)
 	if err != nil {
-		return errors.New("failed to request swagger-codegen-cli.jar from maven")
+		return errors.New("failed to request openapi-generator-cli.jar from maven")
 	}
 	defer resp.Body.Close()
 
@@ -75,7 +65,7 @@ func downloadFile(url string, output string) error {
 	bar.Start()
 	_, err = io.Copy(out, bar.NewProxyReader(resp.Body))
 	if err != nil {
-		return errors.New("failed to download swagger-codegen-cli.jar from maven")
+		return errors.New("failed to download openapi-generator-cli.jar from maven")
 	}
 	bar.Finish()
 	return nil

@@ -6,10 +6,10 @@ import (
 )
 
 func Current() error {
-	cmd := exec.Command("swagger-codegen", "version")
+	cmd := exec.Command("openapi-generator", "version")
 	output, err := cmd.Output()
 	if err != nil {
-		// TODO: handle when swagger-codegen doesn't exist on $PATH
+		// TODO: handle when openapi-generator doesn't exist on $PATH
 		return err
 	}
 	fmt.Println(string(output))

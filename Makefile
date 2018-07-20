@@ -1,4 +1,4 @@
-BINARY_NAME := swagger-version-manager
+BINARY_NAME := openapi-version-manager
 PLATFORMS := linux/amd64 darwin/amd64 windows/amd64
 temp = $(subst /, ,$@)
 os = $(word 1, $(temp))
