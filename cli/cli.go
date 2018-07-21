@@ -5,13 +5,13 @@ import (
 
 	"github.com/urfave/cli"
 
-	"github.com/Place1/openapi-version-manager/commands"
+	"openapi-version-manager/commands"
 )
 
 func Run(args []string) error {
 	app := cli.NewApp()
 	app.Name = "openapi-version-manager"
-	app.Version = "1.0.1"
+	app.Version = "1.0.0"
 
 	app.Commands = []cli.Command{
 		{

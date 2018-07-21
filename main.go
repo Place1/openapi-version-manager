@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/Place1/openapi-version-manager/cli"
+	"openapi-version-manager/cli"
 	"log"
 	"os"
 )
