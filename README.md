@@ -29,22 +29,18 @@ GLOBAL OPTIONS:
 **list available openapi versions**
 ```bash
 $ openapi-version-manager list
-3.0.0-rc1
-3.0.0-rc0
-2.3.1
-2.3.0
-2.2.3
-2.2.2
-2.2.1
-2.2.0
-2.1.6
-2.1.5
+3.1.1
+3.1.0
+3.0.3
+3.0.2
+3.0.1
+3.0.0
 ```
 
 **use a specific openapi-generator version**
 ```bash
 $ openapi-version-manager use 2.2.3
-downloading http://search.maven.org/remotecontent?filepath=io/openapi/openapi-generator-cli/2.2.3/openapi-generator-cli-2.2.3.jar
+downloading http://search.maven.org/remotecontent?filepath=io/openapi/openapi-generator-cli/2.2.3/openapi-generator-cli-3.1.1.jar
  3.25 MiB / 13.19 MiB [===================>                                                                     ]  25% 00m01
 ```
 ```bash
