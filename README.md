@@ -10,14 +10,14 @@ NAME:
    openapi-version-manager - A new cli application
 
 USAGE:
-   openapi-version-manager-darwin-amd64 [global options] command [command options] [arguments...]
+   openapi-version-manager-linux-amd64 [global options] command [command options] [arguments...]
 
 VERSION:
    1.0.0
 
 COMMANDS:
-     current  show the current openapi codegen version
-     list     list available openapi codegen versions
+     current  show the current openapi generator version
+     list     list available openapi generator versions
      use      use the specified openapi-generator-version
      help, h  Shows a list of commands or help for one command
 
@@ -40,19 +40,19 @@ $ openapi-version-manager list
 **use a specific openapi-generator version**
 ```bash
 $ openapi-version-manager use 2.2.3
-downloading http://search.maven.org/remotecontent?filepath=io/openapi/openapi-generator-cli/2.2.3/openapi-generator-cli-3.1.1.jar
+downloading http://search.maven.org/remotecontent?filepath=io/openapi/openapi-generator-cli/3.1.1/openapi-generator-cli-3.1.1.jar
  3.25 MiB / 13.19 MiB [===================>                                                                     ]  25% 00m01
 ```
 ```bash
 $ openapi-generator version
-2.2.3
+3.1.1
 ```
 
 ## Installation
 
 ### MacOS
 ```bash
-curl -Lo openapi-version-manager https://github.com/Place1/openapi-version-manager/releases/download/v1.0.0/openapi-version-manager-darwin-amd64
+curl -Lo openapi-version-manager "$(curl -s https://api.github.com/repos/Place1/openapi-version-manager/releases/latest | grep 'download.*darwin' | cut -d '"' -f 4)"
 chmod +x ./openapi-version-manager
 mv ./openapi-version-manager /usr/local/bin/
 openapi-version-manager --help
@@ -60,7 +60,7 @@ openapi-version-manager --help
 
 ### Linux
 ```bash
-curl -Lo openapi-version-manager https://github.com/Place1/openapi-version-manager/releases/download/v1.0.0/openapi-version-manager-linux-amd64
+curl -Lo openapi-version-manager "$(curl -s https://api.github.com/repos/Place1/openapi-version-manager/releases/latest | grep 'download.*linux' | cut -d '"' -f 4)"
 chmod +x ./openapi-version-manager
 mv ./openapi-version-manager /usr/local/bin/
 openapi-version-manager --help
